@@ -1,0 +1,114 @@
+<ng-include src="'views/mainMenu.html'"></ng-include>
+<h2>{{ vm.title }}</h2>
+
+<form ng-class="(vm.formWasValidated) ? 'was-validated': ''" class="needs-validation" ng-submit="vm.sendForm()" novalidate>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="name">Статус</label>
+            <select class="custom-select" id="name" ng-class="(vm.formModel.name.valid) ? '': 'is-invalid'" ng-model="vm.formModel.name.value"
+                name="name">
+                <option selected value="В ожидании">В ожидании</option>
+                <option value="Оплачено">Оплачено</option>
+            </select>
+            <div ng-class="(vm.formModel.name.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.name.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="klient">Клиент</label>
+            <input ng-class="(vm.formModel.klient.valid) ? '': 'is-invalid'" ng-model="vm.formModel.klient.value"
+                   type="text" class="form-control" id="klient" ng-keyup="vm.validate()">
+            <div ng-class="(vm.formModel.klient.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.klient.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="telefon">Телефон</label>
+            <input ng-class="(vm.formModel.telefon.valid) ? '': 'is-invalid'" ng-model="vm.formModel.telefon.value"
+                   ng-keyup="vm.validate()" type="text" class="form-control" id="telefon" value="ФИО">
+            <div ng-class="(vm.formModel.telefon.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.telefon.infoText}}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-3 mb-4">
+            <label for="avto">Автомобиль</label>
+            <input ng-class="(vm.formModel.avto.valid) ? '': 'is-invalid'" ng-model="vm.formModel.avto.value"
+                   ng-keyup="vm.validate()" type="text" class="form-control" id="avto">
+            <div ng-class="(vm.formModel.avto.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.avto.infoText}}
+            </div>
+        </div>
+        <div class="col-md-5 mb-4">
+            <label for="vin">VIN номер</label>
+            <input ng-class="(vm.formModel.vin.valid) ? '': 'is-invalid'" ng-model="vm.formModel.vin.value"
+                   ng-keyup="vm.validate()" type="text" class="form-control" id="vin" >
+            <div ng-class="(vm.formModel.vin.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.vin.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="remont">Ремонт</label>
+            <select class="custom-select" id="remont" ng-class="(vm.formModel.remont.valid) ? '': 'is-invalid'" ng-model="vm.formModel.remont.value"
+                    name="remont">
+                <option selected value="Да">Да</option>
+                <option value="Нет">Нет</option>
+            </select>
+            <div ng-class="(vm.formModel.remont.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.remont.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="diagnost">Диагностика</label>
+            <select class="custom-select" id="diagnost" ng-class="(vm.formModel.diagnost.valid) ? '': 'is-invalid'" ng-model="vm.formModel.diagnost.value"
+                    name="diagnost">
+                <option selected value="Да">Да</option>
+                <option value="Нет">Нет</option>
+            </select>
+            <div ng-class="(vm.formModel.diagnost.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.diagnost.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="vid">Вид услуги</label>
+            <select class="custom-select" id="vid" ng-class="(vm.formModel.vid.valid) ? '': 'is-invalid'" ng-model="vm.formModel.vid.value"
+                    name="vid">
+                <option selected value="Замена катализатора">Замена катализатора</option>
+                <option value="Замена ГРМ">Замена ГРМ</option>
+                <option value="Ремонт двигателя">Ремонт двигателя</option>
+                <option value="Замена антифриза">Замена антифриза</option>
+            </select>
+            <div ng-class="(vm.formModel.vid.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.vid.infoText}}
+            </div>
+        </div>
+        <div class="col-md-2 mb-4">
+            <label for="avto">Счет</label>
+            <input ng-class="(vm.formModel.summ.valid) ? '': 'is-invalid'" ng-model="vm.formModel.summ.value"
+                   ng-keyup="vm.validate()" type="number" class="form-control" id="summ">
+            <div ng-class="(vm.formModel.summ.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.summ.infoText}}
+            </div>
+        </div>
+        <div class="col-md-2 mb-4">
+            <label for="date-start">Дата начала</label>
+            <input ng-model="vm.formModel.dateStart.value" type="date" class="form-control" id="date-start">
+<!--            <div class="valid-feedback">-->
+<!--                Looks good!-->
+<!--            </div>-->
+        </div>
+        <div class="col-md-2 mb-4">
+            <label for="date-finish">Дата завершения</label>
+            <input ng-model="vm.formModel.dateFinish.value" type="date" class="form-control" id="date-finish">
+<!--            <div class="valid-feedback">-->
+<!--                Looks good!-->
+<!--            </div>-->
+        </div>
+    </div>
+    <button ng-disabled="!vm.formWasValidated" class="btn btn-primary" type="submit">Добавить</button>
+</form>
+
+<div ng-show="vm.error.length" class="alert alert-danger" role="alert">
+    {{vm.error}}
+</div>
