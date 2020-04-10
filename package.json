@@ -1,10 +1,11 @@
 {
-  "name": "pks16-2_kr",
+  "name": "pks17-2_c",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "PASSWD_SALT='adrlkgjadlkrgjadlkgjdfgvjhndcfgjsdkfjsldkfj' TOKENTTLMINUTES=120 node ./bin/www",
     "updateWebdriver": "webdriver-manager update",
+    "e2etest": "protractor e2e-tests/protractor.conf.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
